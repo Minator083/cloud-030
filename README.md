@@ -1,18 +1,18 @@
 # React + Vite
 # Webowy System Mikroserwisowy - React, Express, Docker, Kubernetes
 
-## Opis
+## Opis:
 
 Aplikacja webowa oparta na mikroserwisach z front-endem w **React.js** i back-endem w **Express.js**. Aplikacja jest konteneryzowana przy użyciu **Docker** i wdrażana w środowisku **Kubernetes**.
 
-## Technologie
+## Technologie:
 
 - **React.js** - Front-end
 - **Express.js** - Back-end
 - **Docker** - Konteneryzacja
 - **Kubernetes** - Orkiestracja
 
-## Jak Uruchomić
+## Jak Uruchomić:
 
 1. Zainstaluj **Docker** i **Kubernetes**.
 2. Zbuduj obrazy Docker:  

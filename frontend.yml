@@ -1,0 +1,36 @@
+apiVersion: apps/v1  # Wersja API dla zasobu Deployment
+kind: Deployment  # Typ zasobu (Deployment - do zarządzania aplikacjami w Kubernetes)
+metadata:
+  name: frontend  # Nazwa Deploymentu
+spec:
+  replicas: 2  # Liczba replik (podów) dla aplikacji frontend
+  selector:
+    matchLabels:
+      app: frontend  # Używa selektora do dopasowania podów o etykiecie "app: frontend"
+  template:
+    metadata:
+      labels:
+        app: frontend  # Etykieta przypisana do podu (pomaga w selekcji)
+    spec:
+      containers:
+        - name: frontend  # Nazwa kontenera
+          image: frontend:latest  # Obraz kontenera z lokalnego repozytorium (frontend:latest)
+          imagePullPolicy: Never  # Używa lokalnego obrazu, nie próbuje pobierać go z zewnętrznego repozytorium
+          ports:
+            - containerPort: 5173  # Port, na którym kontener nasłuchuje (w tym przypadku Vite używa portu 5173)
+          env:
+            - name: VITE_APP_BACKEND_ADDRESS  # Zmienna środowiskowa dla adresu backendu
+              value: http://backend:3000/api/data  # Adres backendu, do którego frontend będzie się odwoływał
+
+---
+apiVersion: v1  # Wersja API dla zasobu Service
+kind: Service  # Typ zasobu (Service - do wystawiania aplikacji na zewnątrz)
+metadata:
+  name: frontend  # Nazwa usługi frontend
+spec:
+  ports:
+    - port: 8080  # Port, na którym usługa będzie dostępna z zewnątrz
+      targetPort: 5173  # Port w kontenerze, do którego przekierowywany jest ruch (5173)
+  selector:
+    app: frontend  # Selektor używany do powiązania usługi z kontenerami oznaczonymi etykietą "app: frontend"
+  type: NodePort  # Typ usługi (NodePort - udostępnia aplikację na zewnętrznej sieci, przez port na węźle)

@@ -2,8 +2,8 @@ import "./App.css";
 import RootLayout from "./layouts/RootLayout.jsx";
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home.jsx";
-import Page1 from "./pages/page1.jsx";
-import Page2 from "./pages/page2.jsx";
+import Page1 from "./pages/Page1.jsx";
+import Page2 from "./pages/Page2.jsx";
 import NotFound from "./pages/NotFound.jsx";
 
 function App() {

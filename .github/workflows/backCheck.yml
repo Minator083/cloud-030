@@ -4,7 +4,7 @@ name: Workflow sprawdzający poprawność budowania aplikacji bazy
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the "Branch01" branch
+  # Triggers the workflow on push or pull request events but only for the "Main" branch
   push:
     branches: [ "main" ]
   pull_request:
